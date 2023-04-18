@@ -1,7 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import { TextField, Button, Box } from "@mui/material";
+import {validarNombre, validarApellido, validarNumero} from  "./validaciones"
 
-const DatosPersonales = () => {
+const DatosPersonales = ({updateStep}) => {
+
+  const [nombre, setNombre] = useState({
+    nombre: {
+      value: "",
+      valid: true,
+    },
+  });
+
+  const [apellido, setApellido] = useState({
+    apellido: {
+      value: "",
+      valid: true,
+    },
+  });
+
+  const [numero, setNumero] = useState({
+    numero: {
+      value: "",
+      valid: true,
+    },
+  });
+
   return (
     <Box
       component="form"
@@ -12,6 +35,19 @@ const DatosPersonales = () => {
         justifyContent: "center",
         flexDirection: "column",
       }}
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (
+          nombre.nombre.valid &&
+          apellido.apellido.valid &&
+          numero.numero.valid
+        ) {
+          console.log(nombre, apellido, numero);
+          updateStep(2);
+        } else {
+          console.log("Nada");
+        }
+      }}
     >
       <TextField
         label="Nombre"
@@ -19,6 +55,13 @@ const DatosPersonales = () => {
         fullWidth
         margin="dense"
         type="text"
+        error={!nombre.nombre.valid}
+        helperText={!nombre.nombre.valid ? nombre.nombre.value : ""}
+        onChange={(e) => {
+          const nombre = e.target.value;
+          const valido = validarNombre(nombre);
+          setNombre(valido);
+        }}
       />
       <TextField
         label="Apellidos"
@@ -26,6 +69,13 @@ const DatosPersonales = () => {
         fullWidth
         margin="dense"
         type="text"
+        error={!apellido.apellido.valid}
+        helperText={!apellido.apellido.valid ? apellido.apellido.value : ""}
+        onChange={(e) => {
+          const apellido = e.target.value;
+          const valido = validarApellido(apellido);
+          setApellido(valido);
+        }}
       />
       <TextField
         label="Número telefónico"
@@ -34,6 +84,13 @@ const DatosPersonales = () => {
         margin="dense"
         type="number"
         inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+        error={!numero.numero.valid}
+        helperText={!numero.numero.valid ? numero.numero.value : ""}
+        onChange={(e) => {
+          const numero = e.target.value;
+          const valido = validarNumero(numero);
+          setNumero(valido);
+        }}
       />
       <Button variant="contained" type="submit">
         Siguiente
