@@ -5,6 +5,7 @@ import Form from "./Form";
 import { CounterContext } from "./Context";
 import Contador from "./Contador";
 import { ContainerContador } from "./styles";
+import Footer from "./Footer";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             </Button>
           </div>
         </ContainerContador>
+        <Footer />
       </FormSpace>
     </MainSpace>
   );
