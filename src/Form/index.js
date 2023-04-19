@@ -14,6 +14,7 @@ import { validarNombre, validarApellido, validarNumero } from "./DatosPersonales
 import { validarDireccion, validarCiudad, validarEstado } from "./DatosEntrega/validaciones";
 
 const Form = () => {
+
   //useEffect para consumir una API
   /* useEffect(() => {
     const pedido = async () => {
@@ -30,6 +31,7 @@ const Form = () => {
 
   //Las siguientes lineas comentadas y los metodos traidos en los import no usados, 
   // hacen referencia a una manera mas reducida de como crear cada formulario
+  
   /* const [pasos, setPasos] = useState({});
 
   const onSubmit = (e, step, pasos) => {

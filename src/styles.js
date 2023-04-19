@@ -29,3 +29,10 @@ export const FormSpace = styled.div`
     width: 100vw;
   }
 `;
+
+export const ContainerContador = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
